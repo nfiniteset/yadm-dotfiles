@@ -11,11 +11,11 @@ cask 'tower'
 cask 'visual-studio-code'
 cask 'slack'
 cask 'sketch'
-cask 'hyperterm'
+cask 'hyper'
 cask 'dropbox'
 cask 'istat-menus'
+cask '1password'
 
-mas "1Password", id: 443987910
 mas "Drop", id: 1173932628
 mas "Deliveries", id: 924726344
 mas "Byword", id: 420212497
