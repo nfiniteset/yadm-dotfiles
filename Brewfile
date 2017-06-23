@@ -1,0 +1,5 @@
+brew 'postgresql'
+brew 'zsh'
+brew 'zsh-syntax-highlighting'
+brew 'nvm'
+brew 'heroku'
