@@ -15,7 +15,7 @@ brew install yadm
 
 Install these dotfiles
 ```bash
-yadm clone https://git.github.com/nfiniteset/yadm
+yadm clone https://github.com/nfiniteset/yadm.git
 yadm status
 ```
 
