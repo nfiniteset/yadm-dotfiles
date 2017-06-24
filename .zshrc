@@ -55,12 +55,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 source ~/.zprofile
-
-# Add RVM to PATH for scripting
 
 # Add Go binaries to PATH
 export GOPATH=$HOME/Projects/go
