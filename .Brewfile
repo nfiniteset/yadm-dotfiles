@@ -15,6 +15,7 @@ cask 'hyper'
 cask 'dropbox'
 cask 'istat-menus'
 cask '1password'
+cask 'iterm2'
 
 mas "Drop", id: 1173932628
 mas "Deliveries", id: 924726344
