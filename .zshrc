@@ -81,3 +81,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Nag if yadm has uncommitted changes
 [[ $(yadm diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "\n\e[1;31myadm has uncommitted changes\e[0m" && yadm status --porcelain
+export PATH="$HOME/.yarn/bin:$PATH"
