@@ -1,0 +1,1 @@
+alias sicp="rlwrap mit-scheme"

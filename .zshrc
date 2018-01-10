@@ -53,17 +53,13 @@ plugins=(git bundler zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/.mix/escripts:$PATH
 
 source ~/.zprofile
 
 # Add Go binaries to PATH
 export GOPATH=$HOME/Projects/go
 export PATH="$PATH:$GOPATH/bin"
-
-# Add NVM (Node Version Manager) stuff to path
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
 
 # Press escape to enter VIM command mode
 bindkey -v
@@ -76,8 +72,9 @@ prompt pure
 # Add syntax highlighting in zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 # Nag if yadm has uncommitted changes
 [[ $(yadm diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "\n\e[1;31myadm has uncommitted changes\e[0m" && yadm status --porcelain
+
+# ASDF - Version manager for Elixir, Ruby, Node, etc.
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
