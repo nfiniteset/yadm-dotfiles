@@ -74,7 +74,6 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Nag if yadm has uncommitted changes
 [[ $(yadm diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "\n\e[1;31myadm has uncommitted changes\e[0m" && yadm status --porcelain
-<<<<<<< HEAD
 
 # ASDF - Version manager for Elixir, Ruby, Node, etc.
 . $HOME/.asdf/asdf.sh
