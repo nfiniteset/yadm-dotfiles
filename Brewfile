@@ -1,5 +1,5 @@
 brew 'zsh'
-brew 'zsh-syntax-highlighting'
+brew 'starship'
 brew 'cask'
 brew 'mas'
 brew 'yadm'
