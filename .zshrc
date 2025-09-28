@@ -57,10 +57,6 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/.mix/escripts:$PATH
 
 source ~/.zprofile
 
-# Add Go binaries to PATH
-export GOPATH=$HOME/Projects/go
-export PATH="$PATH:$GOPATH/bin"
-
 # Press escape to enter VIM command mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -78,5 +74,14 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # ASDF - Version manager for Elixir, Ruby, Node, etc.
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+# Load ASDF version manager
+. /opt/homebrew/opt/asdf/asdf.sh
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+# NVM stuff
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
