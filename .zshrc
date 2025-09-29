@@ -1,7 +1,3 @@
-
-# Initialize prompt theme
-eval "$(starship init zsh)"
-
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/.mix/escripts:$PATH
 
@@ -19,7 +15,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Case insensitive autocomplete
+autoload -Uz +X compinit && compinit
 
+## case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
 
 
 ## -- start Asana stuff:
@@ -33,3 +34,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 ## -- end Asana stuff
+
+
+
+# Initialize prompt theme
+eval "$(starship init zsh)"
