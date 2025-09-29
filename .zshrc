@@ -1,3 +1,4 @@
+
 # Initialize prompt theme
 eval "$(starship init zsh)"
 
@@ -20,3 +21,15 @@ export NVM_DIR="$HOME/.nvm"
 
 
 
+
+## -- start Asana stuff:
+export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/seandurham/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+## -- end Asana stuff
