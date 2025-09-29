@@ -20,7 +20,7 @@ autoload -Uz +X compinit && compinit
 
 ## case insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':completion:*' menu select
+zstyle ':completion:*' menu selectyadm add 
 
 
 ## -- start Asana stuff:
@@ -39,3 +39,4 @@ esac
 
 # Initialize prompt theme
 eval "$(starship init zsh)"
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
