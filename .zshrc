@@ -8,6 +8,14 @@
 [[ -f "$HOME/.shared_rc" ]] && source "$HOME/.shared_rc"
 
 # ============================================================================
+# Shell Behavior
+# ============================================================================
+
+# Press escape to enter VIM command mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# ============================================================================
 # Completions
 # ============================================================================
 
@@ -15,7 +23,7 @@
 autoload -Uz +X compinit
 
 # Check cache once per day for better performance
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
   compinit
 else
   compinit -C

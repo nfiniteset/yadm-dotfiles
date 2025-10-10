@@ -1,6 +1,6 @@
-# .bash_profile.local.example - Machine-specific environment configuration
-# Copy this file to .bash_profile.local and customize for your machine
-# .bash_profile.local is gitignored and will not be committed
+# .shared_profile.local.example - Machine-specific environment configuration
+# Copy this file to .shared_profile.local and customize for your machine
+# .shared_profile.local is gitignored and will not be committed
 
 # ============================================================================
 # Work Machine Example Configuration

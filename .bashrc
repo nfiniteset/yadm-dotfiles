@@ -1,4 +1,4 @@
-# Bash-specific nteractive shell configuration
+# Bash-specific interactive shell configuration
 # This file is sourced for interactive shells
 # Use this for shell behavior, aliases, functions, and completions only - NO PATH modifications
 

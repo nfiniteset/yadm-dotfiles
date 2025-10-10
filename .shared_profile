@@ -5,8 +5,14 @@
 # Initialize Homebrew environment
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# OpenSSL path (for compiled tools)
-[[ -n "$HOMEBREW_PREFIX" ]] && export PATH="$HOMEBREW_PREFIX/opt/openssl/bin:$PATH"
+# OpenSSL path (for compiled tools) with idempotent PATH modification
+if [[ -n "$HOMEBREW_PREFIX" ]]; then
+  OPENSSL_BIN="$HOMEBREW_PREFIX/opt/openssl/bin"
+  case ":$PATH:" in
+    *":$OPENSSL_BIN:"*) ;;
+    *) export PATH="$OPENSSL_BIN:$PATH" ;;
+  esac
+fi
 
 # pnpm setup with idempotent PATH modification
 export PNPM_HOME="$HOME/Library/pnpm"
