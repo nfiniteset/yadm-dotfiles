@@ -1,0 +1,16 @@
+# .bash_profile.local.example - Machine-specific environment configuration
+# Copy this file to .bash_profile.local and customize for your machine
+# .bash_profile.local is gitignored and will not be committed
+
+# ============================================================================
+# Work Machine Example Configuration
+# ============================================================================
+
+# Work-specific environment variables
+export WORK_GIT_EMAIL=your.email@work.com
+
+# Load work-specific configurations
+export WORK_REPO=~/work/repo/dir
+if [[ -d "$WORK_REPO" ]]; then
+  source $WORK_REPO/admin/mac.bashrc
+fi

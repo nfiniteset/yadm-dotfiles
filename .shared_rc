@@ -1,0 +1,79 @@
+# .shared_rc - Shared environment configuration
+# This file is sourced by both .bashrc and .zshrc
+# Use this for shell behavior, aliases, and functions only - NO PATH modifications
+
+# ============================================================================
+# Shell Behavior
+# ============================================================================
+
+# Press escape to enter VIM command mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# ============================================================================
+# Aliases
+# ============================================================================
+
+# Git
+alias gs='git status'
+alias gco='git checkout'
+alias gb='git branch'
+
+# Etc.
+alias ll='ls -la'
+
+# ============================================================================
+# Tool Integrations (with lazy loading for performance)
+# ============================================================================
+
+# NVM lazy loading function for better performance
+# This loads NVM only when node, npm, or nvm commands are used
+if [[ -d "$HOME/.nvm" ]]; then
+  export NVM_DIR="$HOME/.nvm"
+
+  # Lazy load NVM
+  nvm() {
+    unset -f nvm node npm npx
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    nvm "$@"
+  }
+
+  # Lazy load node
+  node() {
+    unset -f nvm node npm npx
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    node "$@"
+  }
+
+  # Lazy load npm
+  npm() {
+    unset -f nvm node npm npx
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    npm "$@"
+  }
+
+  # Lazy load npx
+  npx() {
+    unset -f nvm node npm npx
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    npx "$@"
+  }
+fi
+
+# ============================================================================
+# Status Checks
+# ============================================================================
+
+# Nag if yadm has uncommitted changes
+[[ $(yadm diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "\n\e[1;31myadm has uncommitted changes\e[0m" && yadm status --porcelain
+
+# ============================================================================
+# Machine-specific overrides (not tracked in git)
+# ============================================================================
+[[ -f "$HOME/.shared_rc.local" ]] && source "$HOME/.shared_rc.local"
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+[[ -f "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"

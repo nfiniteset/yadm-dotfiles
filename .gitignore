@@ -1,0 +1,25 @@
+# Local machine-specific overrides (may contain secrets)
+*.local
+
+# Shell history files
+.bash_history
+.zsh_history
+
+# Environment files that may contain secrets
+.env
+.env.*
+
+# Tool-specific files that may contain credentials
+.aws/credentials
+.ssh/config
+.npmrc
+.pypirc
+
+# Backup files
+*.bak
+*.swp
+*~
+
+# OS-specific
+.DS_Store
+Thumbs.db

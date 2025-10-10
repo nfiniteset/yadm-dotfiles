@@ -1,10 +1,13 @@
-source .bash_local
+# .bash_profile - Login shell environment setup
+# This file is sourced for login shells
+# Use this for PATH and environment variables
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# ============================================================================
+# Source shared setup
+# ============================================================================
+[[ -f "$HOME/.shared_profile" ]] && source "$HOME/.shared_profile"
 
-
-## -- start Asana stuff:
-# Ensure bash picks up our asana-specific configuration from .profile
-source ~/.profile
-. "$HOME/.cargo/env"
-## -- end Asana stuff
+# ============================================================================
+# Source interactive shell configuration
+# ============================================================================
+[[ -f "$HOME/.bashrc" ]] && source "$HOME/.bashrc"

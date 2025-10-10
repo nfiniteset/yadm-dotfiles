@@ -1,42 +1,43 @@
-# Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/.mix/escripts:$PATH
+# ZSH-specific interactive shell configuration
+# This file is sourced for interactive shells
+# Use this for shell behavior, aliases, functions, and completions only - NO PATH modifications
 
-source ~/.zprofile
+# ============================================================================
+# Source shared setup
+# ============================================================================
+[[ -f "$HOME/.shared_rc" ]] && source "$HOME/.shared_rc"
 
-# Press escape to enter VIM command mode
-bindkey -v
-export KEYTIMEOUT=1
+# ============================================================================
+# Completions
+# ============================================================================
 
-# Nag if yadm has uncommitted changes
-[[ $(yadm diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "\n\e[1;31myadm has uncommitted changes\e[0m" && yadm status --porcelain
+# Case insensitive autocomplete with caching
+autoload -Uz +X compinit
 
-# NVM stuff
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Check cache once per day for better performance
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
-# Case insensitive autocomplete
-autoload -Uz +X compinit && compinit
-
-## case insensitive path-completion
+# Case insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':completion:*' menu selectyadm add 
+zstyle ':completion:*' menu select
 
+# ============================================================================
+# Prompt Theme & Styling
+# ============================================================================
 
-## -- start Asana stuff:
-export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
-
-# pnpm
-export PNPM_HOME="/Users/seandurham/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-## -- end Asana stuff
-
-
-
-# Initialize prompt theme
+# Initialize Starship prompt
 eval "$(starship init zsh)"
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Load syntax highlighting if available (loaded last for better performance)
+[[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# ============================================================================
+# Machine-Specific Overrides
+# ============================================================================
+
+[[ -f "$HOME/.shared_rc.local" ]] && source "$HOME/.shared_rc.local"
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

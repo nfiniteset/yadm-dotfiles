@@ -1,9 +1,13 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# .zprofile - Login shell environment setup
+# This file is sourced for login shells
+# Use this for PATH and environment variables
 
-alias sicp="rlwrap mit-scheme"
+# ============================================================================
+# Source shared setup
+# ============================================================================
+[[ -f "$HOME/.shared_profile" ]] && source "$HOME/.shared_profile"
 
-
-## -- start Asana stuff:
-# Ensure zsh picks up our asana-specific configuration from .profile
-source ~/.profile
-## -- end Asana stuff
+# ============================================================================
+# Source interactive shell configuration
+# ============================================================================
+[[ -f "$HOME/.zshrc" ]] && source "$HOME/.zshrc"

@@ -1,8 +1,14 @@
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# Bash-specific nteractive shell configuration
+# This file is sourced for interactive shells
+# Use this for shell behavior, aliases, functions, and completions only - NO PATH modifications
 
-export GOPATH=$HOME/Projects/go
-export PATH="$PATH:$GOPATH/bin"
+# ============================================================================
+# Source shared setup
+# ============================================================================
+[[ -f "$HOME/.shared_rc" ]] && source "$HOME/.shared_rc"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# ============================================================================
+# Machine-Specific Overrides
+# ============================================================================
+[[ -f "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
+[[ -f "$HOME/.shared_rc.local" ]] && source "$HOME/.shared_rc.local"

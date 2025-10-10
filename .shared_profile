@@ -1,0 +1,21 @@
+# .profile - Shared environment configuration
+# This file is sourced by both .bash_profile and .zprofile
+# Use this for environment variables that should be consistent across shells
+
+# Initialize Homebrew environment
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# OpenSSL path (for compiled tools)
+[[ -n "$HOMEBREW_PREFIX" ]] && export PATH="$HOMEBREW_PREFIX/opt/openssl/bin:$PATH"
+
+# pnpm setup with idempotent PATH modification
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# Machine-specific overrides (not tracked in git)
+[[ -f "$HOME/.shared_profile.local" ]] && source "$HOME/.shared_profile.local"
+[[ -f "$HOME/.zprofile.local" ]] && source "$HOME/.zprofile.local"
+[[ -f "$HOME/.bash_profile.local" ]] && source "$HOME/.bash_profile.local"
