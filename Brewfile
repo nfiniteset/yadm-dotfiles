@@ -3,14 +3,15 @@ brew 'zsh-syntax-highlighting'
 brew 'starship' # Shell prompt customizer
 brew 'cask'
 brew 'mas' # Mac App Store
-brew 'tmux'
 brew 'uv' # Python version and package manager
 brew 'yadm' # Dotfiles manager
 
+tap "withgraphite/tap"
+brew "withgraphite/tap/graphite", trusted: true
+
 cask '1password'
-cask 'cmux'
 cask 'google-chrome'
-cask 'iterm2'
+cask 'cmux'
 cask 'kap'
 cask 'rectangle'
 cask 'visual-studio-code'
