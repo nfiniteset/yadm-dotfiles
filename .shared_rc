@@ -18,41 +18,23 @@ alias ll='ls -la'
 # Tool Integrations (with lazy loading for performance)
 # ============================================================================
 
-# NVM lazy loading function for better performance
-# This loads NVM only when node, npm, or nvm commands are used
+# NVM: put the default node version on PATH eagerly so child processes
+# (git hooks, editors, scripts) can find node/npm/npx. Sourcing nvm.sh is
+# the slow part, so that stays lazy-loaded behind the nvm command.
+# Assumes the default alias is a plain version number (e.g. "24.8.0").
 if [[ -d "$HOME/.nvm" ]]; then
   export NVM_DIR="$HOME/.nvm"
 
-  # Lazy load NVM
+  if [[ -s "$NVM_DIR/alias/default" ]]; then
+    PATH="$NVM_DIR/versions/node/v$(<"$NVM_DIR/alias/default")/bin:$PATH"
+  fi
+
+  # Lazy load full nvm only for version switching
   nvm() {
-    unset -f nvm node npm npx
+    unset -f nvm
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
     nvm "$@"
-  }
-
-  # Lazy load node
-  node() {
-    unset -f nvm node npm npx
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    node "$@"
-  }
-
-  # Lazy load npm
-  npm() {
-    unset -f nvm node npm npx
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    npm "$@"
-  }
-
-  # Lazy load npx
-  npx() {
-    unset -f nvm node npm npx
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    npx "$@"
   }
 fi
 
