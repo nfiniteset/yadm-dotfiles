@@ -10,6 +10,7 @@
 alias gs='git status'
 alias gco='git checkout'
 alias gb='git branch'
+alias park='git checkout --detach next-master'
 
 # Etc.
 alias ll='ls -la'
